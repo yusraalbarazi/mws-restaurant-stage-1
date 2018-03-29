@@ -16,16 +16,18 @@
     </header>
 
     <main id="maincontent">
-        <section id="map-container">
+
+        <section id="map-container" role="application" aria-label="Google Map">
             <div id="map"></div>
+
         </section>
         <section>
             <div class="filter-options">
-                <h2>Filter Results</h2>
-                <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+                <h2 id="filter">Filter Results</h2>
+                <select id="neighborhoods-select" name="neighborhoods" role="listbox" aria-label="choose a neighborhood" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
         </select>
-                <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+                <select id="cuisines-select" name="cuisines" role="listbox" aria-label="choose a cuisine" onchange="updateRestaurants()">
           <option value="all">All Cuisines</option>
         </select>
             </div>
@@ -36,7 +38,7 @@
 
     <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
     <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
-    <script type="application/javascript" charset="utf-8" src="js/swController.js"></script>
+    <script charset="utf-8" src="js/swController.js"></script>
 
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPX2wDxKHiq5inShXqWSZahfSGimdh-Nw&libraries=places&callback=initMap"></script>

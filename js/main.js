@@ -28,6 +28,7 @@ fetchNeighborhoods = () => {
 
 /**
  * Set neighborhoods HTML.
+ * Set accessability attribute Role='option', and aria-label='name of the neighborhood'
  */
 fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
     const select = document.getElementById('neighborhoods-select');
@@ -35,6 +36,8 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
         const option = document.createElement('option');
         option.innerHTML = neighborhood;
         option.value = neighborhood;
+        option.setAttribute('role', 'option');
+        option.setAttribute('aria-label', neighborhood)
         select.append(option);
     });
 }
@@ -55,6 +58,7 @@ fetchCuisines = () => {
 
 /**
  * Set cuisines HTML.
+ * Set accessability attribute Role='option', and aria-label='name of the cuisine'
  */
 fillCuisinesHTML = (cuisines = self.cuisines) => {
     const select = document.getElementById('cuisines-select');
@@ -63,6 +67,8 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
         const option = document.createElement('option');
         option.innerHTML = cuisine;
         option.value = cuisine;
+        option.setAttribute('role', 'option');
+        option.setAttribute('aria-label', cuisine)
         select.append(option);
     });
 }
@@ -91,9 +97,11 @@ updateRestaurants = () => {
     const nSelect = document.getElementById('neighborhoods-select');
 
     const cIndex = cSelect.selectedIndex;
+
     const nIndex = nSelect.selectedIndex;
 
     const cuisine = cSelect[cIndex].value;
+
     const neighborhood = nSelect[nIndex].value;
 
     DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
@@ -141,6 +149,7 @@ createRestaurantHTML = (restaurant) => {
     const image = document.createElement('img');
     image.className = 'restaurant-img';
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    image.alt = `${restaurant.name} restaurant`
     li.append(image);
 
 
@@ -158,10 +167,12 @@ createRestaurantHTML = (restaurant) => {
     address.innerHTML = restaurant.address;
     li.append(address);
 
+    // add aria-label to the view details button
     const more = document.createElement('a');
     more.innerHTML = 'View Details';
     more.className = 'viewDetails';
     more.href = DBHelper.urlForRestaurant(restaurant);
+    more.setAttribute('aria-label', 'view details of the ' + restaurant.name + ' restaurant')
     li.append(more)
 
     return li
