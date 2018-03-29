@@ -80,10 +80,12 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
         const row = document.createElement('tr');
 
         const day = document.createElement('td');
+        day.setAttribute('aria-label', 'open on ' + key);
         day.innerHTML = key;
         row.appendChild(day);
 
         const time = document.createElement('td');
+        time.setAttribute('aria-label', 'from ' + operatingHours[key]);
         time.innerHTML = operatingHours[key];
         row.appendChild(time);
 
