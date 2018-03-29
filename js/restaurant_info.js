@@ -73,6 +73,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
 /**
  * Create restaurant operating hours HTML table and add it to the webpage.
+ * adding aria-label for oping days and times
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
     const hours = document.getElementById('restaurant-hours');
@@ -85,8 +86,8 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
         row.appendChild(day);
 
         const time = document.createElement('td');
-        time.setAttribute('aria-label', 'from ' + operatingHours[key]);
         time.innerHTML = operatingHours[key];
+        time.setAttribute('aria-label', 'opening hours from ' + operatingHours[key]);
         row.appendChild(time);
 
         hours.appendChild(row);
@@ -171,3 +172,82 @@ getParameterByName = (name, url) => {
         return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+/*
+const showMapButton = document.createElement('div');
+showMapButton.setAttribute("id", "button");
+const header = document.querySelector('header');
+header.append(showMapButton);
+
+showMapButton.setAttribute('id', 'show-map');
+showMapButton.setAttribute('role', 'button');
+showMapButton.setAttribute('tabindex', '0');
+showMapButton.setAttribute("aria-pressed", "false");
+
+const mapToHide = document.getElementById("map-container");
+mapToHide.style.display = "none";
+
+if (mapToHide.style.display == "none") {
+    showMapButton.textContent = 'Map view' || mapToHide.style.display == "flex";
+}
+
+showMapButton.setAttribute('aria-label', showMapButton.textContent);
+
+showMeMap = () => {
+    showMapButton.focus();
+    showMapButton.setAttribute("aria-pressed", "true");
+
+    if (mapToHide.style.display == "none") {
+        mapToHide.style.display = "flex";
+        showMapButton.style.display = "none";
+    } else {
+        mapToHide.style.display = "none";
+    }
+};
+
+/**
+ * @description Add event listeners to the various buttons
+ * @param keydown - Keydown event
+ * @param function
+ */
+/*
+// Define values for keycodes
+const VK_ENTER = 13;
+const VK_SPACE = 32;
+
+showMapButton.addEventListener('keydown', function(event) {
+    switch (event.keyCode) {
+        case VK_SPACE:
+        case VK_ENTER:
+            {
+
+                showMeMap();
+                event.stopPropagation();
+                event.preventDefault();
+                break;
+            }
+    }
+});
+
+showMapButton.addEventListener('click', showMeMap);
+*/
+/**
+ * @description Create a div for skip to the main content :
+ * <div class='invisible' role='complementary'></div>
+ */
+/*
+const skipNav = document.createElement('div');
+skipNav.setAttribute("role", "complementary");
+skipNav.className = 'invisible';
+
+const nav = document.querySelector('nav');
+nav.prepend(skipNav);
+
+const linkMain = document.createElement('a');
+linkMain.href = '#restaurant-name';
+linkMain.textContent = 'Skip to the main content';
+linkMain.setAttribute('aria-label', linkMain.textContent);
+linkMain.className = 'skip-main';
+
+skipNav.prepend(linkMain);
+*/

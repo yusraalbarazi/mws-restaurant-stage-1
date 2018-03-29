@@ -397,7 +397,7 @@ nav h1 a {
 
 /* ====================== Mobile View======================*/
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:650px) {
     /* ====================== Restaurant Details======================*/
     #restaurant-name,
     #reviews-container h2 {
