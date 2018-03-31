@@ -18,6 +18,12 @@ body {
     position: relative;
 }
 
+div:focus {
+    text-decoration: none;
+    border: double 5px rgb(196, 135, 22);
+    border-radius: 4px;
+}
+
 ul,
 li {
     font-family: Arial, Helvetica, sans-serif;
@@ -30,10 +36,17 @@ a {
     text-decoration: none;
 }
 
-a:hover,
 a:focus {
+    outline: none;
+}
+
+a:hover,
+a:focus,
+a:active {
     color: #3397db;
     text-decoration: none;
+    border: double 5px rgb(196, 135, 22);
+    border-radius: 4px
 }
 
 a img {
@@ -185,6 +198,13 @@ nav h1 a {
     width: 200px;
 }
 
+.filter-options select:focus,
+.filter-options select:active {
+    text-decoration: none;
+    border: double 5px rgb(196, 135, 22);
+    border-radius: 4px
+}
+
 
 /* ====================== Restaurant Listing ====================== */
 
@@ -245,47 +265,8 @@ nav h1 a {
     text-transform: uppercase;
 }
 
-
-/*=================== wide screen >1150px ===================*/
-
-@media screen and (min-width:1150px) {
-    #breadcrumb {
-        width: calc(50% - 80px);
-    }
-    /* Display list items side by side */
-    #breadcrumb li {
-        display: inline;
-    }
-    #restaurants-list li {
-        display: inline-block;
-    }
-    #restaurants-list .restaurant-img {
-        display: inline-block;
-        opacity: 1;
-        width: 100%;
-        height: auto;
-        transition: .5s ease;
-        backface-visibility: hidden;
-    }
-    .viewDetails {
-        display: inline-block;
-        opacity: 0;
-        transition: .5s ease;
-    }
-    #restaurants-list li:hover .restaurant-img {
-        opacity: 0.3;
-    }
-    li:hover,
-    li:focus {
-        opacity: 0.8;
-    }
-    #restaurants-list li:hover .viewDetails,
-    #restaurants-list li:focus .viewDetails {
-        opacity: 1;
-    }
-    #reviews-list li p {
-        margin: 0 0 10px;
-    }
+#restaurants-list>li:focus {
+    outline: 5px solid #fff;
 }
 
 
@@ -395,10 +376,38 @@ nav h1 a {
 }
 
 
-/* ====================== Mobile View======================*/
+/* ============= MEDIA QUERY FOR MOBILE DEVICES - PHONES ===============*/
 
-@media screen and (max-width:650px) {
+@media screen and (max-width:500px) {
     /* ====================== Restaurant Details======================*/
+    .inside #maincontent {
+        display: block;
+        justify-content: center;
+    }
+    #breadcrumb li {
+        display: inline;
+        font-size: 15px;
+        min-width: 100%;
+    }
+    .inside #map-container {
+        background: blue none repeat scroll 0 0;
+        height: 400px;
+        right: 0;
+        top: 80px;
+        max-width: 100%;
+        min-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    .inside #restaurant-container {
+        padding-top: 420px;
+    }
+    li {
+        border-bottom-right-radius: 30px;
+        -moz-border-radius-bottomright: 30px;
+        border-top-left-radius: 30px
+    }
     #restaurant-name,
     #reviews-container h2 {
         font-size: 18pt;
@@ -409,14 +418,6 @@ nav h1 a {
         margin-left: auto;
         margin-right: auto;
     }
-    #comments {
-        display: block;
-        margin: 17px 3px -12px;
-        padding: 0px 20px 25px;
-        overflow: hidden;
-        width: 85%;
-        font-size: 10pt;
-    }
     #reviews-list li {
         background-color: #fff;
         border: 2px solid #f3f3f3;
@@ -426,19 +427,6 @@ nav h1 a {
         padding: 0px 0px 0px;
         position: relative;
         width: 90%;
-    }
-    #rating {
-        float: left;
-        background-color: orange;
-        border-bottom: 3px solid #eee;
-        color: #fff;
-        display: block;
-        font-size: 10pt;
-        margin: 16px 23px 11px;
-        padding: 7px 15px 5px;
-        text-align: left;
-        text-decoration: none;
-        text-transform: uppercase;
     }
     #review-date {
         margin-bottom: 10px;
@@ -454,34 +442,32 @@ nav h1 a {
         text-align: center;
         margin: 0px -1px -1px;
     }
-    .inside #maincontent {
+    #rating {
+        float: left;
+        background-color: orange;
+        border-bottom: 3px solid #eee;
+        color: #fff;
         display: block;
+        font-size: 10pt;
+        margin: 16px 23px 11px;
+        padding: 7px 15px 5px;
+        text-align: left;
+        text-decoration: none;
+        text-transform: uppercase;
     }
-    #breadcrumb li {
-        display: inline;
-        font-size: 15px;
-        min-width: 100%;
-    }
-    .inside #map-container {
-        background: blue none repeat scroll 0 0;
-        height: 300px;
-        right: 0;
-        top: 80px;
-        max-width: 100%;
-        min-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+    #comments {
         display: block;
-    }
-    li {
-        border-bottom-right-radius: 30px;
-        -moz-border-radius-bottomright: 30px;
-        border-top-left-radius: 30px
-    }
-    .inside #restaurant-container {
-        padding-top: 405px;
+        margin: 17px 3px -12px;
+        padding: 0px 20px 25px;
+        overflow: hidden;
+        width: 85%;
+        font-size: 10pt;
     }
     /* ======================= Restaurant Listing ======================*/
+    .filter-options {
+        font-size: 1.1em;
+        display: inline-block;
+    }
     #restaurants-list {
         max-width: 100%;
         margin-left: auto;
@@ -502,7 +488,51 @@ nav h1 a {
     nav h1 a {
         font-size: 12pt;
     }
-    #header {
-        position: fixed;
+}
+
+
+/*=========== MEDIA QUERY FOR WIDE SCREEN SUCH AS LAPTOPS ===========*/
+
+@media screen and (min-width:1150px) {
+    #breadcrumb {
+        width: calc(50% - 80px);
+    }
+    /* Display list items side by side */
+    #breadcrumb li {
+        display: inline;
+    }
+    #restaurants-list li {
+        display: inline-block;
+    }
+    #restaurants-list .restaurant-img {
+        display: inline-block;
+        opacity: 1;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+    .viewDetails {
+        display: inline-block;
+        opacity: 0.7;
+        transition: .5s ease;
+    }
+    #restaurants-list li:hover .restaurant-img {
+        opacity: 0.3;
+    }
+    #restaurants-list li:focus {
+        outline: 0;
+    }
+    #restaurants-list li:hover {
+        opacity: 0.8;
+        border: solid 3px orange;
+    }
+    #restaurants-list li:hover .viewDetails,
+    #restaurants-list li:focus .viewDetails,
+    #restaurants-list li:active .viewDetails {
+        opacity: 1;
+    }
+    #reviews-list li p {
+        margin: 0 0 10px;
     }
 }
