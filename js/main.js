@@ -147,17 +147,18 @@ createRestaurantHTML = (restaurant) => {
     const li = document.createElement('li');
 
     const picture = document.createElement('picture');
-    li.append(picture);
+
     const source = document.createElement('source');
-    source.media = "(min-width:650)";
+    source.media = '(min-width:1000px)';
     source.srcset = DBHelper.largeImageUrlForRestaurant(restaurant)
-    source.alt = `${restaurant.name} restaurant`
+    source.alt = `${restaurant.name} restaurant`;
+    picture.prepend(source);
     const image = document.createElement('img');
     image.className = 'restaurant-img';
     image.src = DBHelper.mediumImageUrlForRestaurant(restaurant);
-    image.alt = `${restaurant.name} restaurant`
+    image.alt = `${restaurant.name} restaurant`;
     picture.prepend(image);
-    picture.prepend(source);
+    li.append(picture);
 
 
 
@@ -198,3 +199,23 @@ addMarkersToMap = (restaurants = self.restaurants) => {
         self.markers.push(marker);
     });
 }
+
+/**
+ * Create an element to skip to the main content
+ * <div class='invisible'>
+ * <a href='#neighborhoods-select' class='skip-main' aria-label='Skip to the main content'>Skip to the main content</a>
+ * </div>
+ */
+const skipNav = document.createElement('div');
+skipNav.className = 'invisible';
+skipNav.setAttribute("role", "complementary");
+const nav = document.querySelector('nav');
+nav.prepend(skipNav);
+
+const linkNeighborhoods = document.createElement('a');
+linkNeighborhoods.href = '#neighborhoods-select';
+linkNeighborhoods.textContent = 'Skip to the main content';
+linkNeighborhoods.setAttribute('aria-label', linkNeighborhoods.textContent);
+linkNeighborhoods.className = 'skip-main';
+
+skipNav.prepend(linkNeighborhoods);

@@ -269,6 +269,15 @@ nav h1 a {
     outline: 5px solid #fff;
 }
 
+.invisible {
+    position: absolute;
+    top: 59px;
+    right: 7px;
+    flex-wrap: wrap;
+    font-size: 1.1em;
+    justify-content: flex-end;
+}
+
 
 /* ====================== Restaurant Details ====================== */
 
@@ -376,9 +385,9 @@ nav h1 a {
 }
 
 
-/* ============= MEDIA QUERY FOR MOBILE DEVICES - PHONES ===============*/
+/* ============= MEDIA QUERY FOR MOBILE DEVICES - PHONES AND TABLETS ===============*/
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:600px) {
     /* ====================== Restaurant Details======================*/
     .inside #maincontent {
         display: block;
@@ -401,7 +410,7 @@ nav h1 a {
         display: block;
     }
     .inside #restaurant-container {
-        padding-top: 420px;
+        padding-top: 500px;
     }
     li {
         border-bottom-right-radius: 30px;
@@ -488,6 +497,9 @@ nav h1 a {
     nav h1 a {
         font-size: 12pt;
     }
+    .invisible {
+        font-size: 10px;
+    }
 }
 
 
@@ -534,5 +546,41 @@ nav h1 a {
     }
     #reviews-list li p {
         margin: 0 0 10px;
+    }
+    .inside map {
+        max-width: 50%;
+    }
+}
+
+
+/* ============= MEDIA QUERY FOR MOBILE DEVICES -TABLETS ===============*/
+
+@media screen and (min-width:601px) and (max-width:1149px) {
+    .inside #map-container {
+        width: 100%;
+        height: 400px;
+    }
+    #restaurant-container {
+        padding-top: 500px;
+    }
+    #restaurant-container,
+    #reviews-container {
+        max-width: 100%;
+        align-content: center;
+    }
+    td,
+    p {
+        font-size: 15pt;
+    }
+}
+
+
+/* ============= MEDIA QUERY FOR MOBILE DEVICES -TV ===============*/
+
+@media screen and (min-width:2500px) {
+    body {
+        width: 2400px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

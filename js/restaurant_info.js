@@ -55,10 +55,20 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     const address = document.getElementById('restaurant-address');
     address.innerHTML = restaurant.address;
 
+    const picture = document.createElement('picture');
+
+    const source = document.createElement('source');
+    source.media = '(min-width: 600px)';
+    source.srcset = DBHelper.mediumImageUrlForRestaurant(restaurant);
+    picture.prepend(source);
     const image = document.getElementById('restaurant-img');
 
-    image.alt = 'It is an image of ' + restaurant.name + ' restuarant which is ' + restaurant.cuisine_type + ' cuisine';
-    image.src = DBHelper.mediumImageUrlForRestaurant(restaurant);
+    image.className = 'restaurant-img';
+    image.src = DBHelper.largeImageUrlForRestaurant(restaurant);
+    image.alt = `${restaurant.name} restaurant`;
+
+
+
 
     const cuisine = document.getElementById('restaurant-cuisine');
     cuisine.innerHTML = restaurant.cuisine_type;
@@ -67,8 +77,11 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     if (restaurant.operating_hours) {
         fillRestaurantHoursHTML();
     }
+
     // fill reviews
     fillReviewsHTML();
+    return picture;
+
 }
 
 /**
@@ -235,7 +248,7 @@ showMapButton.addEventListener('click', showMeMap);
  * @description Create a div for skip to the main content :
  * <div class='invisible' role='complementary'></div>
  */
-/*
+
 const skipNav = document.createElement('div');
 skipNav.setAttribute("role", "complementary");
 skipNav.className = 'invisible';
@@ -250,4 +263,3 @@ linkMain.setAttribute('aria-label', linkMain.textContent);
 linkMain.className = 'skip-main';
 
 skipNav.prepend(linkMain);
-*/
