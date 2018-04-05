@@ -201,6 +201,33 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 }
 
 /**
+ * @description Add an accessibility attribute to option if it's selected
+ * @param {string} id - The neighborhood or the cuisines select tag
+ */
+
+function SelectGroup(id) {
+    this.el = document.querySelector(id);
+    this.el.setAttribute('role', 'listbox');
+
+    this.options = slice(this.el.querySelectorAll('option'));
+    let firstOption = true;
+
+    this.options.map(option => {
+        if (firstOption) {
+            option.setAttribute('aria-selected', 'true');
+            firstOption = false;
+        } else {
+            option.setAttribute('role', 'option');
+        }
+
+        option.setAttribute('role', 'option');
+    });
+
+    const neighborhoodList = new SelectGroup('#neighborhoods-select');
+    const cuisinesList = new SelectGroup('#cuisines-select');
+}
+
+/**
  * Create an element to skip to the main content
  * <div class='invisible'>
  * <a href='#neighborhoods-select' class='skip-main' aria-label='Skip to the main content'>Skip to the main content</a>
