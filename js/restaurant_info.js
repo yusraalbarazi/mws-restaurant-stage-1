@@ -90,21 +90,42 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
     const hours = document.getElementById('restaurant-hours');
+
     for (let key in operatingHours) {
-        const row = document.createElement('tr');
+        const row = document.createElement('tr')
 
         const day = document.createElement('td');
-        day.setAttribute('aria-label', 'open on ' + key);
         day.innerHTML = key;
-        row.appendChild(day);
 
+        row.appendChild(day);
         const time = document.createElement('td');
         time.innerHTML = operatingHours[key];
-        time.setAttribute('aria-label', 'opening hours from ' + operatingHours[key]);
+
+        if (day.innerHTML === "Monday") {
+            const weekdays = document.createElement('p');
+            weekdays.tabIndex = "0";
+
+            weekdays.id = 'weekdays';
+            weekdays.setAttribute('aria-hidden', 'true');
+            weekdays.setAttribute('aria-label', "weekdays: " + time.innerHTML);
+            restaurant - hours.appendChild(weekdays);
+        }
+        if (day.innerHTML === "Sunday") {
+            const weekend = document.createElement('p');
+            weekend.tabIndex = "0";
+            weekend.id = 'weekend';
+            weekend.setAttribute('aria-hidden', "true");
+            weekend.setAttribute('aria-label', "weekdend: " + time.innerHTML);
+            restaurant - hours.appendChild(weekend);
+        }
         row.appendChild(time);
 
+
         hours.appendChild(row);
+
     }
+
+
 }
 
 /**
