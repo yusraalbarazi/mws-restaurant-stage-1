@@ -110,7 +110,7 @@ nav h1 {
 
 nav h1 a {
     color: #fff;
-    font-size: 14pt;
+    font-size: 18pt;
     font-weight: 200;
     letter-spacing: 10px;
     text-transform: uppercase;
@@ -333,7 +333,7 @@ nav h1 a {
 #restaurant-name {
     color: #cd7004;
     font-family: Arial, sans-serif;
-    font-size: 20pt;
+    font-size: 16pt;
     font-weight: 200;
     letter-spacing: 0;
     margin: 15px 0 30px;
@@ -379,7 +379,7 @@ nav h1 a {
 
 #reviews-container h2 {
     color: #cd7004;
-    font-size: 24pt;
+    font-size: 16pt;
     font-weight: 300;
     letter-spacing: -1px;
     padding-bottom: 1pt;
@@ -405,6 +405,9 @@ nav h1 a {
 #restaurant-hours td {
     color: #666;
 }
+
+#weekend,
+#weekdays {}
 
 
 /* ============= MEDIA QUERY FOR MOBILE DEVICES - PHONES  ===============*/
@@ -445,7 +448,7 @@ nav h1 a {
     }
     #restaurant-name,
     #reviews-container h2 {
-        font-size: 16pt;
+        font-size: 14pt;
     }
     #reviews-container,
     #restaurant-container {
@@ -525,7 +528,7 @@ nav h1 a {
         padding: 8px 30px 10px;
     }
     nav h1 a {
-        font-size: 12pt;
+        font-size: 16pt;
     }
     .invisible {
         font-size: 0.7em;
